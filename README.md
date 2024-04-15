@@ -1,50 +1,20 @@
-# Modelo de Apresentação do Projeto
+# Projeto `Triagem de drogas in silico para Leucemia Linfoide Aguda (LLA)`
+# Project `in silico drug screening for Acute Lymphocytic Leukemia (ALL)`
 
-No repositório do projeto, deve haver um arquivo com dados básicos do projeto e da equipe na raiz, uma pasta para cada etapa de entrega, conforme templates a seguir:
-
-A seguir é apresentada a estrutura de pastas esperada no repositório do projeto:
-
-~~~
-├── README.md      <- apresentação do projeto
-│
-├── project-1      <- primeira entrega - modelo conceitual e lógico
-│
-└── project-2-final  <- entrega final
-~~~
-
-* [Entrega 1](project1/)
-* Entrega 2
-* Entrega Final
-
-Na raiz do projeto do GitHub deve haver um arquivo de nome `README.md` contendo a apresentação da equipe e projeto, como detalhado na seção seguinte. Este arquivo é escrito em Markdown. Para conhecer Markdown, veja [Editando o Arquivo README.md](markdown.md). 
-
-Segue abaixo o modelo de como deve ser apresentado e documentado o projeto. Há partes do modelo a seguir que têm uma marcação específica indicando que **não devem ser literalmente transcritas**:
-
-Trecho entre `<...>` representa algo que deve ser substituído pelo indicado. Nesse caso, você não deve manter os símbolos `<...>`.
-> Parágrafo que aparece neste modo de citação representa algo que deve ser substituído pelo explicado.
-
-No modelo a seguir são colocados exemplos ilustrativos, que serão substituídos pelos do seu projeto.
-
-# Modelo para Apresentação do Grupo e Projeto
-
-> *arquivo `README.md` que fica na raiz*
-
-# Projeto `<Título do Projeto>`
-# Project `<Title in English>`
-
-> Incluir nome RA e foco de especialização de cada membro do grupo.
-> |Nome  | RA | Especialização|
-> |--|--|--|
-> | Nome1  | 123456  | Biologia |
-> | Nome2  | 123456  | Saúde |
-> | Nome3  | 123456  | Computação |
-> | Nome4  | 123456  | XXX|
-> | Nome5  | 123456  | XXX|
-> | Nome6  | 123456  | XXX|
+|Nome  | RA | Especialização|
+|--|--|--|
+| Gabriella de Oliveira Fortes  | 184666  | Biologia / Saúde |
+| Igor Fernando Mandello  | 236769  | Computação |
+| Marcio Magrini  | 117920  | Biologia / Saúde |
+| Nome4  | 123456  | XXX|
+| Nome5  | 123456  | XXX|
 
 # Apresentação
 
 O presente projeto foi originado no contexto das atividades da disciplina de pós-graduação [*Ciência e Visualização de Dados em Saúde*](https://github.com/datasci4health), oferecida no primeiro semestre de 2024, na Unicamp.
 
 # Descrição Resumida do Projeto
-> Descrição do tema do projeto, incluindo motivação e contexto gerador.
+
+A Leucemia Linfoide Aguda (LLA) é uma neoplasia agressiva e heterogênea que afeta células precursoras de linfócitos, ocorrendo quando há o sequestro das células de seu ciclo normal de diferenciação, alterando vias de proliferação e apoptose e gerando o quadro da doença. Por se tratar de uma doença heterogênea onde casos de recaída tem um prognóstico ruim, os pacientes podem se beneficiar de abordagens baseadas na medicina de precisão, promovendo estratégias terapêuticas pensadas segundo as características moleculares do paciente, buscando o tratamento adequado para evitar recaídas e o desenvolvimento de resistência aos medicamentos. 
+
+Desta forma, buscamos criar um modelo baseado em dados de transcriptômica organizados em uma rede com o objetivo de identificar os grupos de genes mais afetados de um paciente segundo a expressão gênica e qual droga age de forma mais eficiente na rede do paciente. Esta abordagem permite maior liberdade para explorar possibilidades de tratamento ainda in sílico, tornando mais eficiente os esforços in vitro e in vivo, tentando diminuir custos e promover o desenvolvimento de alternativas terapêuticas para os pacientes. 
