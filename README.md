@@ -6,8 +6,8 @@
 | Gabriella de Oliveira Fortes  | 184666  | Biologia / Saúde |
 | Igor Fernando Mandello  | 236769  | Computação |
 | Marcio Magrini  | 117920  | Biologia / Saúde |
-| Nome4  | 123456  | XXX|
-| Nome5  | 123456  | XXX|
+| Manuella Munuera Hoff  | 183526  | Biologia / Saúde |
+| Bruno Sussel Mendes Cunha Bastos  | 246992  | Computação |
 
 # Apresentação
 

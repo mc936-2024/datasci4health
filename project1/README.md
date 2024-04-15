@@ -20,16 +20,14 @@ Desta forma, buscamos criar um modelo baseado em dados de transcriptômica organ
 
 # Perguntas de Pesquisa
 
-- As vias moleculares alteradas na LLA se organizam em clusters que podem ser alvos para tratamentos? 
+- As vias moleculares alteradas na LLA se organizam em clusters?
+- Esses clusters são alvos potenciais para as classes de fármacos disponíveis que iremos triar in silico?  
 
 # Bases de Dados
 
-> Elencar bases de dados candidatas a serem utilizadas no projeto na forma de tabela:
-
-> Base de Dados | Endereço na Web | Resumo descritivo
-> ----- | ----- | -----
-> Título da Base 1 | http://base1.org/ | Breve resumo (duas ou três linhas) sobre a base.
-> Título da Base 2 | http://base2.org/ | Breve resumo (duas ou três linhas) sobre a base.
+Base de Dados | Endereço na Web | Resumo descritivo |
+----- | ----- | ----- |
+St. Jude Cloud | https://www.stjude.cloud/ | Banco de dados de pacientes pediátricos tumorais. Possui dados de genômica, exoma e transcriptoma completos. |
 
 # Modelo Lógico
 
