@@ -31,11 +31,9 @@ St. Jude Cloud | https://www.stjude.cloud/ | Banco de dados de pacientes pediát
 
 # Modelo Lógico
 
-> Modelo lógico da base de grafos que será construída. Para o modelo de grafos de propriedades, utilize este
-> [modelo de base](https://docs.google.com/presentation/d/10RN7bDKUka_Ro2_41WyEE76Wxm4AioiJOrsh6BRY3Kk/edit?usp=sharing) para construir o seu.
-> Coloque a imagem do PNG do seu modelo lógico como ilustrado abaixo (a imagem estará na pasta `image`):
->
-> ![Modelo Lógico de Grafos](images/modelo-logico-grafos.png)
+![Modelo Lógico de Grafos](assets/images/logic-model.png)
+
+No modelo lógico do grafo, há duas relações possíveis entre proteínas: a ativação e a inibição da função de uma pela outra. Fármacos externos também podem causar a ativação e inibição de outras proteínas.
 
 # Metodologia
 
