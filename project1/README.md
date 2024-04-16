@@ -17,6 +17,8 @@ Desta forma, buscamos criar um modelo baseado em dados de transcriptômica organ
 
 - Apesar das taxas de sobrevida chegarem a 80% em países desenvolvidos, ainda 20% dos pacientes sofrem recaídas. E como o tratamento para LLA se baseia em quimioterapia de alta intensidade, esses pacientes não podem depender do aumento das  doses dos medicamentos, precisando de novas estratégias para alcançar a remissão - Cordo’ et al. (2021). [[3]](#3)
 
+- As abordagens baseadas em redes têm aplicações biológicas e clínicas potenciais, desde a identificação de genes de doenças até melhores alvos de medicamentos. Enquanto os genes essenciais tendem a estar associados a hubs, ou proteínas altamente conectadas, os genes de doenças tendem a segregar-se na periferia funcional da rede, evitando hubs - Barabási et al. (2011) [[4]](#4)
+
 
 # Perguntas de Pesquisa
 
@@ -56,3 +58,5 @@ Exploraremos os conceitos de centralidade, detecção de comunidade, e _link pre
 
 
 <a id="3">[3]</a> Cordo’, V., van der Zwet, J. C. G., Canté-Barrett, K., Pieters, R., & Meijerink, J. P. P. (2021). T-cell Acute Lymphoblastic Leukemia: A Roadmap to Targeted Therapies. Blood Cancer Discovery, 2(1), 19–31. https://doi.org/10.1158/2643-3230.BCD-20-0093 
+
+<a id="4">[4]</a> Barabási, AL., Gulbahce, N. & Loscalzo, J. (2011). Network medicine: a network-based approach to human disease. Nat Rev Genet 12, 56–68. https://doi.org/10.1038/nrg2918
