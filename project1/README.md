@@ -28,6 +28,7 @@ Desta forma, buscamos criar um modelo baseado em dados de transcriptômica organ
 Base de Dados | Endereço na Web | Resumo descritivo |
 ----- | ----- | ----- |
 St. Jude Cloud | https://www.stjude.cloud/ | Banco de dados de pacientes pediátricos tumorais. Possui dados de genômica, exoma e transcriptoma completos. |
+| Dados Hospital Boldrini | Não disponível | Painel de drogas com potencial de serem utilizadas na LLA. |
 
 # Modelo Lógico
 
@@ -41,9 +42,9 @@ Exploraremos os conceitos de centralidade, detecção de comunidade, e _link pre
 
 # Ferramentas
 
-- [Neo4j](https://neo4j.com/)
-- [Cytoscape](https://cytoscape.org/)
-- [String DB](https://string-db.org/)
+- [Neo4j](https://neo4j.com/): organizar os dados que vieram “crus” dos bancos de dados em gráficos de redes.
+- [Cytoscape](https://cytoscape.org/): analisar o gráfico em rede gerado de acordo com os conceitos de centralidade, comunidade e link prediction.
+- [String DB](https://string-db.org/): verificar a quais vias proteicas os genes diferencialmente expressos estão inseridos.
 
 # Referências Bibliográficas
 
