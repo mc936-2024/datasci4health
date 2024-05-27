@@ -50,9 +50,9 @@ No modelo lógico do grafo, há duas relações possíveis entre proteínas: a a
 
 ### Relações entre fármacos e proteínas/genes
 
-Foram feitos dois grafos mostrando as relações entre os fármacos e os genes e proteínas relacionados à LLA. Para a escolha dos genes no primeiro grafo, foram tomados todos os genes e suas relações envolvidas nas vias [JAK/STAT](https://version-12-0.string-db.org/cgi/network?networkId=bAgBdUuRK1mZ), [RTK-RAS](https://version-12-0.string-db.org/cgi/network?networkId=bWVfL0O5Pasj) e [PI3K](https://version-12-0.string-db.org/cgi/network?networkId=bBdWJrM6gEIf), pelo String DB. Tais vias são as mais relacionadas à doença segundo [[4]](#4). A escolha dos genes no segundo grafo vêm da lista dos 1000 genes mais heterogêneos segundo uma análise de mean absolute deviation (MAD), com relações entre eles também encontradas pelo String DB. A relação dos fármacos com os genes também foi obtida segundo ....
+Foram feitos dois grafos mostrando as relações entre os fármacos e os genes e proteínas relacionados à LLA. Para a escolha dos genes no primeiro grafo, foram tomados todos os genes e suas relações envolvidas nas vias [JAK/STAT](https://version-12-0.string-db.org/cgi/network?networkId=bAgBdUuRK1mZ), [RTK-RAS](https://version-12-0.string-db.org/cgi/network?networkId=bWVfL0O5Pasj) e [PI3K](https://version-12-0.string-db.org/cgi/network?networkId=bBdWJrM6gEIf), pelo String DB. Tais vias são as mais relacionadas à doença segundo [[4]](#4). A escolha dos genes no segundo grafo vêm da lista dos 1000 genes mais heterogêneos segundo uma análise de mean absolute deviation (MAD), com relações entre eles também encontradas pelo String DB. A relação dos fármacos com os genes foi obtida segundo ....
 
-Nos grafos a seguir, os nós com contorno azul são fármacos, enquanto os nós sem esse contorno representam genes/proteínas. As arestas cinzas são relações entre proteínas, enquanto as arestas azuis e verdes são relações em que o fármaco é inibidor ou antagonista da proteína a que se liga, respectivamente.
+Nos grafos a seguir, os nós com contorno azul são fármacos, enquanto os nós sem esse contorno representam genes/proteínas. As arestas cinzas são relações entre proteínas, enquanto as arestas azuis e verdes são relações em que o fármaco é inibidor ou antagonista da proteína a que se liga, respectivamente. Os nós estão coloridos de tons mais fortes de vermelho quanto maior sua intermediação (betweeness centrality).
 
 #### Grafo 1: Relação de fármacos com genes das principais vias moleculares
 
@@ -123,6 +123,10 @@ ROMI        | Romidepsin                 | HDAC1; HDAC2
 SELI        | Selinexor (KPT-330)        | XPO1
 VINC        | Vincristine (sulfate)      | TUBB
 VORI        | Vorinostat (SAHA)          | HDAC1; HDAC2; HDAC3; HDAC6
+
+### Cluster de genes mais importantes para subtipo e prognóstico
+
+Texto vai aqui
 
 <!-- ## Evolução do projeto (Não obrigatório) -->
 
