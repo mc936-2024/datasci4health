@@ -1,5 +1,5 @@
-# Projeto `Triagem de drogas in silico para Leucemia Linfoide Aguda (LLA)`
-# Project `in silico drug screening for Acute Lymphocytic Leukemia (ALL)`
+# Projeto - Triagem de drogas _in silico_ para Leucemia Linfoide Aguda (LLA)
+# Project - _in silico_ drug screening for Acute Lymphocytic Leukemia (ALL)
 
 |Nome  | RA | Especialização|
 |--|--|--|

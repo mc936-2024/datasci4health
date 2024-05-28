@@ -1,7 +1,7 @@
 *2024.1 Ciência e Visualização de Dados em Saúde*
 
-# Projeto `Triagem de drogas in silico para Leucemia Linfoide Aguda (LLA)`
-# Project `in silico drug screening for Acute Lymphocytic Leukemia (ALL)`
+# Projeto - Triagem de drogas _in silico_ para Leucemia Linfoide Aguda (LLA)
+# Project - _in silico_ drug screening for Acute Lymphocytic Leukemia (ALL)
 
 # Descrição Resumida do Projeto
 

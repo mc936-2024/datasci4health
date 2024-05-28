@@ -1,7 +1,7 @@
 *2024.1 Ciência e Visualização de Dados em Saúde*
 
-# Projeto `Triagem de drogas in silico para Leucemia Linfoide Aguda (LLA)`
-# Project `in silico drug screening for Acute Lymphocytic Leukemia (ALL)`
+# Projeto - Triagem de drogas _in silico_ para Leucemia Linfoide Aguda (LLA)
+# Project - _in silico_ drug screening for Acute Lymphocytic Leukemia (ALL)
 
 # Descrição Resumida do Projeto
 
@@ -110,7 +110,7 @@ AZAX        | 5-Azacytidine              | DNMT1
 BELI        | Belinostat                 | HDAC1; HDAC2; HDAC3; HDAC8; HDAC4; HDAC5; HDAC6; HDAC7; HDAC9; HDAC10; HDAC11
 CLAD        | Cladribine                 | RRM1; RRM2; RRM2B; POLA1; POLE; POLE2; POLE3; POLE4; PNP
 COPA        | Copanlisib dihydrochloride | PIK3CA; PIK3CD
-DASI (DASA) | Dasatinib                  | "ABL1; SRC; EPHA2; LCK; YES1; KIT; PDGFRB; FYN; BCR"
+DASI (DASA) | Dasatinib                  | ABL1; SRC; EPHA2; LCK; YES1; KIT; PDGFRB; FYN; BCR
 DUVE        | Duvelisib                  | PIK3CG; PIK3CD
 FEDR        | Fedratinib                 | JAK2; FLT3
 GILT        | Gilteritinib               | FLT3; AXL; ALK
@@ -124,12 +124,19 @@ SELI        | Selinexor (KPT-330)        | XPO1
 VINC        | Vincristine (sulfate)      | TUBB
 VORI        | Vorinostat (SAHA)          | HDAC1; HDAC2; HDAC3; HDAC6
 
-### Cluster de genes mais importantes para subtipo e prognóstico
+### Cluster de genes mais importantes para prognóstico
 
-Texto vai aqui
+Treinamos um classificador Random Forest para categorizar o prognóstico da amostra com base no TPM dos 1000 genes. Com isso, chegamos em um modelo que atinge um Score F1 de 0.97 no conjunto de teste, que corresponde a 25% das amostras originais.
 
-<!-- ## Evolução do projeto (Não obrigatório) -->
+Com essse modelo treinado, é possível extrair as importâncias de cada feature (que aqui representa um gene), então fizemos isso para os 20 genes mais importantes na classificação:
 
+![importances](assets/images/importances.png)
+
+Com isso, criamos um dendograma clusterizando os 10 genes mais importantes para a classificação do prognóstico:
+
+![importances](assets/images/clusters.png)
+
+Como é possível perceber, existem genes que sua expresão é diretamente associada a um prognóstico ruim, como o `VAT1L`.
 
 # Ferramentas
 
