@@ -1,4 +1,4 @@
-abbreviation	name	inhibits	activates
+abbreviation	name	inhibits	antagonizes
 AZAX	5-Azacytidine	['DNMT1']	[]
 BELI	Belinostat	['HDAC1', 'HDAC2', 'HDAC3', 'HDAC8', 'HDAC4', 'HDAC5', 'HDAC6', 'HDAC7', 'HDAC9', 'HDAC10', 'HDAC11']	[]
 CLAD	Cladribine	['RRM1', 'RRM2', 'RRM2B', 'POLA1', 'POLE', 'POLE2', 'POLE3', 'POLE4', 'PNP']	[]
