@@ -45,7 +45,7 @@ O gene alvo dos 57 fármacos foram identificados usando o banco de dados [DrugBa
 ## Modelo Lógico
 
 **![](/project3-final/assets/images/image1.png)**
-<center>Figura 1 - Modelo lógico dos grafos criados</center></br>
+<p align="center">Figura 1 - Modelo lógico dos grafos criados</p></br>
 
 No modelo lógico do grafo, há a relação de interação entre proteínas. Drogas podem ser inibidoras ou antagonistas com relação às proteínas ou seus genes respectivos. A expressão dos genes e proteínas é definida pelo subtipo de alteração molecular, com as proteínas e genes mais expressos em um subtipo específico tendo uma relação de associação a ele. Note que os subtipos têm como atributo o prognóstico, que varia entre bom, intermediário e ruim.
 
@@ -58,9 +58,11 @@ Os dados de transcriptoma forneceram uma lista de genes mais heterogêneos em ca
 
 Realizamos 3 tipos de análises para encontrar os genes associados aos subtipos de LLA, todas envolvendo o treinamento de uma Random Forest e a extração das *features* (genes) mais importantes. Na primeira análise, treinamos o modelo para classificar os subtipos, obtendo os 20 genes mais importantes para a classificação geral. Na segunda análise, repetimos esse processo com o prognóstico, dessa vez obtendo os genes que diferenciavam um prognóstico bom de um prognóstico ruim. Por fim, na terceira análise, treinamos o modelo para classificar um subtipo de LLA em relação a todos os outros, obtendo os 5 genes que diferenciavam aquele subtipo do resto.
 
-Em todas as análises, filtramos o dataset original para conter apenas os 20 genes resultantes daquela análise (sendo que no terceiro caso, foram 5 genes para cada subtipo). A partir daí, criamos um clustermap para visualizar a expressão desses genes em cada amostra, e assim identificar padrões de expressão que pudessem ser associados a um subtipo ou prognóstico específico.
+Em todas as análises, filtramos o *dataset* original para conter apenas os 20 genes resultantes daquela análise (sendo que no terceiro caso, foram 5 genes para cada subtipo). A partir daí, criamos um clustermap para visualizar a expressão desses genes em cada amostra, e assim identificar padrões de expressão que pudessem ser associados a um subtipo ou prognóstico específico.
 
 O clustermap foi feito com a biblioteca `seaborn` do Python, e a distância os genes e as amostras foi calculada com a distância de Ward, utilizando a métrica Euclidiana.
+
+Os resultados apresentados estarão em uma escala de verde a vermelho, onde o verde representa uma expressão menor que a média, e o vermelho uma expressão maior que a média. A escala vai de -4 a 4 desvio padrões da média. É importante lembrar que nenhuma amostra é de uma pessoa saudável, logo esse desvio padrão é em relação a amostras de LLA, ou seja, um gene que está sendo menoss expresso não necessariamente é anormal, pois pode ser um gene que a média é mais elevada nos outros subtipos de LLA.
 
 ### Criação do grafo
 
@@ -77,13 +79,13 @@ Note que, para todas as relações entre os genes/proteínas obtidas pelo String
 A partir desses dados, consegue-se criar o grafo. Nas imagens a seguir, os nós de cor laranja representam os subtipos, as arestas de cor laranja representam a interação de associação gene/subtipo. Os nós de cor azul representam as drogas, as arestas azuis são as relações de inibição droga-gene, as arestas verdes representam relações de antagonismo droga-gene. Os nós de cor roxa, de tamanho menor, são os genes, e as arestas finas cinzas representam as interações entre eles.
 
 ![](/project3-final/assets/images/image2.png)
-Figura 2: Grafo completo.
+<p align="center">Figura 2: Grafo completo.</p>
 
 Pela quantidade de genes mostradas no grafo completo ser maior que 5000, a imagem se torna difícil de se analisar. Por isso, foi feito um recorte considerando somente os genes diretamente ligados à drogas e subtipos, além dos genes que pertencem aos caminhos mais curtos (desconsiderando orientação das arestas) entre drogas e subtipos. A análise dos caminhos mais curtos e das distâncias é feita na seção de resultados e discussão.
 
 ![](/project3-final/assets/images/image3.png)
 
-Figura 3: grafo considerando subtipos, drogas, genes ligados diretamente às drogas e subtipos, e genes que pertencem ao caminho mínimo entre cada combinação droga-subtipo
+<p align="center">Figura 3: grafo considerando subtipos, drogas, genes ligados diretamente às drogas e subtipos, e genes que pertencem ao caminho mínimo entre cada combinação droga-subtipo</p>
 
 # Evolução do Projeto
 
@@ -98,16 +100,15 @@ Utilizamos o Neo4J para organizar os dados brutos que vieram dos bancos de dados
 # Resultados e Discussão
 ## Genes Importantes para cada Subtipo Molecular
 
-Nossas análises resultaram na identificação dos 5 mais importantes genes para a clusterização dos 4 subtipos. Nossos resultados mostram que não há nenhuma sobreposição entre os subtipos para os 5 genes de cada subtipo. Desta forma, na construção de nosso grafo para a realização da triagem de drogas _in silico_, consideramos os genes como definidores de um subtipo  
-![](/project3-final/assets/images/image4.png)
+Nossas análises resultaram na identificação dos 5 mais importantes genes para a clusterização dos 4 subtipos. Nossos resultados mostram que não há nenhuma sobreposição entre os subtipos para os 5 genes de cada subtipo. Desta forma, na construção de nosso grafo para a realização da triagem de drogas _in silico_, consideramos os genes como definidores de um subtipo.
 
-Figura 4. 5 genes mais importantes para a clusterização dos 4 subtipos escolhidos.
+![](/project3-final/assets/images/image4.png)
+<p align="center">Figura 4. 5 genes mais importantes para a clusterização dos 4 subtipos escolhidos.</p>
 
 A partir do gráfico criado, foram calculadas as distâncias entre os genes alvos dos fármacos e os genes definidores do subtipo. Nosso grafo conseguiu incluir 17 dos 57 fármacos devido a restrição de genes alvos presentes na nossa análise. Dos 17 fármacos, 3 agiam mais diretamente nos genes de cada subtipo, obtendo a distância de 1. Cladribine obteve a distância de 1 para o subtipo _BCR-ABL1_ e _DUX4-IGH_. Imatinib obteve esse valor de distância para o subtipo _KMT2A_. Por último, Vincristina obteve a menor distância para o subtipo _BCR-ABL1_. O subtipo _ETV6-RUNX1_ não apresentou fármacos com valores de distância 1.
 
 ![](/project3-final/assets/images/table1.png)
-
-Tabela 1. Matriz de distância entre os genes alvos dos fármacos e os genes mais importantes para cada subtipo.
+<p align="center">Tabela 1. Matriz de distância entre os genes alvos dos fármacos e os genes mais importantes para cada subtipo.</p>
 
 ## Subtipos moleculares de mau prognóstico - *KMT2A* e *BCR-ABL1*
 Para realização deste projeto, dois subtipos moleculares de mau prognóstico foram selecionados - KMT2A e BCR-ABL1. O primeiro subtipo é caracterizado pela incidência de 70-80% de rearranjos cromossômicos no gene KMT2A (_histone lysine [K]-Methyl Transferase 2A_) em leucemia linfoide aguda pediátrica, a qual leva a linhagem de células precursoras de linfócitos B à expressão de um imunofenótipo característico - antígeno CD19 e co-expressão de CD15, CD33 e CD68, conhecidos como marcadores mielóides (Lejman et al., 2021). Sua função biológica reside na transferência de grupos metil à histonas presentes na cromatina, mediando a sua estrutura e, consequentemente, regulando a ativação da transcrição gênica por mecanismos epigenéticos. A depender do gene ao qual o KMT2A está rearranjado, os pacientes acometidos podem apresentar distintos prognósticos, aos quais classes de medicamentos como inibidores de topoisomerase já são utilizados como alternativa quimioterápica.  
@@ -126,8 +127,7 @@ Diante das análises computacionais realizadas, ao comparar este subtipo aos out
 Mais do que identificar os genes individualmente, a interpretação biológica mais pertinente para este projeto é dos genes em conjunto, para que seja possível determinar quais fármacos podem atuar, se não nestes diretamente, nas vias em que estão inseridos. Para este subtipo em específico, segundo a imagem abaixo (Figura 2), é possível concluir que os níveis de expressão gênica de _SHANK3, ZNF24TR_ e _FHIT_ em geral apresentam os menores desvios-padrão da média dos níveis de expressão destes genes em todas as amostras analisadas, indicando que, para este subtipo, encontram-se negativamente regulados. Em oposição a isso, os genes _LAMP5_ e _HOXA9_ encontram-se, majoritariamente, com os maiores desvios-padrão da média dos níveis de expressão, indicando que encontram-se positivamente regulados. De todas as amostras analisadas para esse subtipo, uma delas apresenta o gene _ZNF24TR_ com nível de expressão médio e os genes _SHANK3_ e _FHIT_ positivamente regulados, o que fez com que esta fosse clusterizada próxima do grupo principal, mas externo a ele.
 
 ![](/project3-final/assets/images/image5.png)
-
-Figura 5. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de _KMT2A_ considerando a sua variação em relação a média da expressão entre os 4 subtipos.
+<p align="center">Figura 5. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de KMT2A considerando a sua variação em relação a média da expressão entre os 4 subtipos.</p>
 
 Ademais, outras duas amostras apresentaram expressão diferencial quando comparadas com as demais amostras do subtipo, visto que possuem os genes _SHANK3_ e _ZNF24TR_ negativamente regulados ou próximos à média de expressão entre todos os subtipos, o gene _FHIT_ positivamente regulado, o gene _LAMP5_ positivamente regulado e o gene _HOXA9_ com regulação negativa, fator o qual os clusterizou próximos um do outro, mas distantes do cluster principal de KMT2A. Tal identificação é importante no contexto da medicina personalizada, pois foi possível ver que, mesmo dentro de um subtipo, os pacientes possuem alterações genéticas distintas, o que pode fazer com que os fármacos possam ser empregados de maneira diferencial entre eles. Esta talvez seja uma evidência de que, em geral, os pacientes apresentam alterações similares, mas é a análise individual de cada transcriptoma que permite a determinação de um tratamento personalizado e não mais apenas a consideração do subtipo molecular.  
 Por fim, no contexto de funções biológicas, embora possam ter padrões de expressão compartilhados, os genes encontrados apresentam funções bastante distintas. O _SHANK3_, por exemplo, atua nas vias de transdução de sinal mediadas por proteínas G-acopladas. Esta via é responsável por captar sinais do meio extracelular e traduzi-los em sinais intracelulares para diferentes vias de sinalização, as quais são inclusive importantes no contexto oncogênico por regularem proliferação, sobrevivência, migração, diferenciação, degradação da matriz celular e angiogênese (Liu _et al_., 2021). Ao encontrar-se menos regulado, as células neoplásicas podem, por exemplo, não responder adequadamente a um sinal externo de diferenciação ou de proliferação, o que faz com que adquiram fenótipos de escape de ciclo celular e indiferenciação.  
@@ -147,7 +147,7 @@ Similarmente ao que foi feito para o subtipo KMT2A, foram identificados os cinco
 Assim como para os outros subtipos, os genes foram analisados e interpretados biologicamente em conjunto e, segundo a Figura 3, é possível identificar um grupo de amostras que é clusterizada de forma similar, em que todos os genes em questão apresentam os maiores desvios-padrão da média dos níveis de expressão, indicando que encontram-se positivamente regulados. Entretanto, assim como foi possível observar com o subtipo KMT2A e de forma ainda mais acentuada, um conjunto de amostras apresentou expressão diferencial quando comparado com as amostras clusterizadas juntas para esse subtipo, fator o qual indica que, além de existirem alterações genéticas distintas para cada paciente, neste subtipo elas são ainda mais diversificadas, o que aumenta a necessidade do uso da medicina personalizada nesse contexto. Mais do que isso, foi possível observar claramente, utilizando como exemplo os níveis de expressão do gene _GBP5_, que mesmo dentro das amostras que compartilham um cluster, existem aquelas que apresentam maior nível de expressão quando comparadas a outras, evidenciando ainda mais essa diversificação.  
 
 ![](/project3-final/assets/images/image6.png)
-Figura 6. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de _BCR-ABL1_ considerando a sua variação em relação a média da expressão entre os 4 subtipos.
+<p align="center">Figura 6. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de BCR-ABL1 considerando a sua variação em relação a média da expressão entre os 4 subtipos.</p>
 
 Entretanto, no que diz respeito às amostras não clusterizadas e à expressão dos genes em questão, não é possível predizer um padrão único que seja compartilhado entre elas, mas é cabível citar os genes que apresentam maior variação de expressão entre os indivíduos. Em relação ao gene _S100A13_, observa-se que apenas algumas amostras apresentam menores desvios-padrão da média dos níveis de expressão deste em relação a outras amostras, indicando que estão negativamente regulados e, portanto, foram clusterizadas mais próximas umas das outras. O mesmo ocorre para os genes _GBP5, STX3, DUSP_ e _TUBA4A_, em que encontram-se em diferentes amostras com o nível de expressão na média (_GBP5_) e negativamente regulados (_STX3, DUSP_ e _TUBA4A_).  
 Por fim, no que diz respeito às funções biológicas exercidas por esses genes, tem-se que o gene S100A13 atua na regulação do ciclo, a diferenciação celular e a apoptose por apresentar, em sua estrutura, dois braços EF que apresentam domínios de ligação a cálcio, e embora tenha sido pouco estudado para LLA, em LMA (Leucemia Mieloide Aguda) apresenta funções importantes no que diz respeito a leucemogênese e manutenção do fenótipo leucêmico, por estimularem inflamação e serem quimioatratores de outras células, modulando o estroma e o microambiente celular (Brener _et al._, 2018). Por estar positivamente regulado, suas atividades são intensificadas em portadores deste subtipo.  
@@ -163,7 +163,7 @@ Em relação aos subtipos moleculares considerados como indicadores de bom progn
 ### Genes mais importantes para DUX4-IGH
 
 ![](/project3-final/assets/images/image7.png)
-Figura 7. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de _DUX4-IGH1_ considerando a sua variação em relação a média da expressão entre os 4 subtipos.
+<p align="center">Figura 7. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de DUX4-IGH1 considerando a sua variação em relação a média da expressão entre os 4 subtipos.</p>
 
 A clusterização de _DUX4-IGH_, a qual obteve 97% de acurácia, foi capaz de unir a maioria dos pacientes desse subtipo em um único cluster, com poucos casos fora do agrupamento. O padrão de 5 genes que permite o cluster deste subtipo é caracterizado pela tendência de uma maior expressão de _PTPRM_, _CAPN3_, _CHST2_ acompanhada pela menor transcrição de _NTSE_ e _DIPK1C_ (Figura 7). O gene _DIPK1C_ codifica uma proteína da família FAM69 e está presente na membrana do retículo endoplasmático. Sua função ainda não é completamente compreendida, mas já há evidência de uma correlação positiva entre sua expressão e positividade da Doença Residual Mínima (DRM) (Zinngrebe _et. al._, 2019; Huang _et. al._, 2021). Já _NTSE,_ ou CD73, faz parte da via de diferenciação de linfócitos e sua alta expressão em amostras de medula óssea de pacientes com LLA foi associada a uma pior taxa de sobrevivência. Sua participação na progressão de diversos tipos de câncer o torna um possível alvo futuro para novas terapias (da Silva Nunes _et. al._, 2022; Jiang _et. al._, 2018; Gao _et. al._, 2014). Portanto, a baixa expressão desses genes em DUX4-IGH pode estar relacionada com seu prognóstico favorável.
 
@@ -172,14 +172,12 @@ A maior expressão de _CHST2_, uma sulfotransferase participante no processo de 
 Dentre as drogas com menor distância relativa para estes genes em nosso grafo, temos Cladribine (antimetabólito análogo de purina). A Cladribine está em testes clínicos para LLA. O mecanismo de ação da Cladribine envolve a conversão da Cladribine em cladribine trifosfato, uma molécula que compete com a adenina trifosfato na síntese do DNA. Um dos alvos desse fármaco é a enzima codificada pelo gene PNP, que catalisa a quebra de moléculas para a produção de purinas livres. A proteína codificada pelo gene _NTSE_ tem como produto da sua atividade adenosina. A adenosina é um nucleosídeo que compete com a Cladribine pela enzima PNP. Portanto, com a baixa expressão de _NTSE_ no subtipo _DUX4-IGH_, não há uma alta produção de adenosina pela proteína codificada por esse gene e como consequência é possível que haja uma menor competição com a Cladribine pela PNP. Assim, nossa triagem foi capaz de identificar uma possível droga para ser usada no subtipo _DUX4-IGH_. Devido a ação de _PTPRM_ na via JAK/STAT, inibidores dessas proteínas como Fedratinib e Ruxolitinib, podem apresentar um efeito reduzido em _DUX4-IGH_ já que a proteína codificada por esse gene já atua reduzindo a atividade desta via.
 
 ![](/project3-final/assets/images/image8.png)
-
-Figura 8. Recorte do gráfico mostrando a conexão entre o gene alvo da Cladribine e o gene _NT5E_, importante para a clusterização do subtipo _DUX4-IGH_.
+<p align="center">Figura 8. Recorte do gráfico mostrando a conexão entre o gene alvo da Cladribine e o gene NT5E, importante para a clusterização do subtipo DUX4-IGH.</p>
 
 ### Genes mais importantes para ETV6-RUNX1
 
 ![](/project3-final/assets/images/image9.png)
-
-Figura 9. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de _ETV6-RUNX1_ considerando a sua variação em relação a média da expressão entre os 4 subtipos.
+<p align="center">Figura 9. Heatmap da expressão gênica dos 5 genes mais importantes para a clusterização de ETV6-RUNX1 considerando a sua variação em relação a média da expressão entre os 4 subtipos.</p>
 
 Em relação a _ETV6-RUNX1_, a clusterização obteve 100% de acurácia e os 5 genes mais importantes para esse subtipo foram capazes de clusterizar a maioria dos casos com essa fusão gênica a partir de um padrão de maior expressão em relação aos outros paciente, com poucas exceções a essa tendência (Figura 9). ENSG00000286393, ENSG00000218672 e ENSG00000260370 são genes codificadores de RNAs longos não codificantes (lncRNAs), cujas funções ainda não são conhecidas e sua relação com leucemia ainda não foi estudada. Os lncRNAs participam em diversas vias moleculares incluindo regulação epigenética, ciclo celular e apoptose, e já foram relacionados a progressão e prognóstico de diversos tipos de câncer. Há evidência da relação entre leucemia e lncRNAs e estes são considerados biomarcadores promissores podendo também se tornar alvos terapêuticos ou indicadores de prognóstico. Para _ETV6-RUNX1_, a presença desses três lncRNAs pode indicar a importância de fatores regulatórios não proteicos para esse subtipo e a possibilidade de novas estratégias de tratamento mais específicas (Gao _et. al._, 2020; Garzon _et. al._, 2014; Fernando _et. al.,_ 2015).
 
